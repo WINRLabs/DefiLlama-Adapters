@@ -1,3 +1,8 @@
+// Arbitrum ------------------
+const { gmxExports } = require("../helper/gmx");
+const WINR_VAULT_CONTRACT = "0x8c50528F4624551Aad1e7A265d6242C3b06c9Fca";
+// ----------------------------
+
 const TOKEN_CONTRACTS = {
   USDC: "0x59edbB343991D30f77dcdBad94003777e9B09BA9",
   USDT: "0x0381132632E9E27A8f37F1bc56bd5a62d21a382B",
@@ -44,5 +49,8 @@ async function main(api) {
 module.exports = {
   winr: {
     tvl: main,
+  },
+  arbitrum: {
+    tvl: gmxExports({ vault: WINR_VAULT_CONTRACT }),
   },
 };
