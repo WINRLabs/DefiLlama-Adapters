@@ -38,6 +38,8 @@
     "graphql": "^16.6.0",
     "graphql-request": "^4.0.0",
     "hi-base32": "^0.5.1",
+    "inquirer": "^12.1.0",
+    "inquirer-fuzzy-path": "^2.3.0",
     "js-sha512": "^0.8.0",
     "limiter": "2.1.0",
     "miscreant": "^0.3.2",

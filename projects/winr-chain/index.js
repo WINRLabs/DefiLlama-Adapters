@@ -1,0 +1,36 @@
+// Token contract addresses
+const TOKEN_CONTRACTS = {
+  USDC: "0x59edbB343991D30f77dcdBad94003777e9B09BA9",
+  USDT: "0x0381132632E9E27A8f37F1bc56bd5a62d21a382B",
+  WINR: "0xBF6FA9d2BF9f681E7b6521b49Cf8ecCF9ad8d31d",
+  WETH: "0xE60256921AE414D7B35d6e881e47931f45E027cf",
+  ARB: "0xF2857668777135E22f8CD53C97aBf8821b7F0bdf",
+  BTC: "0x83c2A33b985ec85205Da0B6d40FC8aAD51354046",
+  BOOP: "0x80ff76cc453C6d8C52092Bdd8b69144DCd64fE73",
+  SPX: "0x503C33E8074A579F5d607BA8a36aE54A6cC6F1A9",
+  BRETT: "0xA817eeb2e2e6830521595272464399b7Ace58586",
+  TOSHI: "0x3A3e8F73C51B5AE1697587058f0C1Da0D3a37024",
+  MOG: "0x157E083590a2dA16742b0FFc1C9c689147e00E8d",
+  SHIB: "0xaF58D898FB995b5B5988A5e63De721Ca76535aC2",
+  PEPE: "0xB198549884cE8a45891466c5B30411124e89e57F",
+  KLAUS: "0xA3AcD262E0313d21C101e6A927d8d87d4C7e5A14",
+};
+
+const contracts = Object.values(TOKEN_CONTRACTS);
+
+async function tvl(api) {
+  let results = await api.multiCall({
+    abi: "erc20:totalSupply",
+    calls: contracts,
+  });
+
+  results = results.map((x) => BigInt(x));
+
+  api.addTokens(contracts, results);
+}
+
+module.exports = {
+  winr: {
+    tvl,
+  },
+};
